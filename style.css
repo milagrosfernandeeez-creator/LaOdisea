@@ -1,0 +1,225 @@
+/* La última ruta de Odiseo — hoja de estilos externa */
+
+/* Tipografías (se cargan también por <link> en el HTML; este @import
+   garantiza que el CSS sea autosuficiente) */
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@500;600&display=swap");
+
+:root {
+  --fondo: #101B2A;
+  --boton: #24364B;
+  --dorado-h1: #D4AF70;
+  --beige-h2: #E8D8C0;
+  --gris-p: #E0DED8;
+  --celeste-a: #8FC7D8;
+  --dorado-hover: #E7BD72;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--fondo);
+  /* Un leve resplandor en lo alto, como luz sobre el horizonte marino */
+  background-image: radial-gradient(ellipse at 50% 0%, rgba(143, 199, 216, 0.10), transparent 60%);
+  background-repeat: no-repeat;
+  color: var(--gris-p);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1.25rem 4rem;
+}
+
+/* ---------- Cabecera ---------- */
+
+.cabecera {
+  width: 100%;
+  max-width: 44rem;
+  text-align: center;
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  /* Greca griega (meandro) hecha solo con CSS */
+  position: relative;
+}
+
+.cabecera::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 14px;
+  background:
+    linear-gradient(var(--dorado-h1), var(--dorado-h1)) 0 0 / 100% 2px no-repeat,
+    linear-gradient(90deg, var(--dorado-h1) 2px, transparent 2px) 0 4px / 28px 10px repeat-x,
+    linear-gradient(90deg, transparent 12px, var(--dorado-h1) 12px, var(--dorado-h1) 14px, transparent 14px) 0 4px / 28px 6px repeat-x,
+    linear-gradient(var(--dorado-h1), var(--dorado-h1)) 0 12px / 100% 2px no-repeat;
+  opacity: 0.55;
+}
+
+h1 {
+  margin: 0;
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+  font-size: clamp(1.9rem, 6vw, 3.4rem);
+  letter-spacing: 0.08em;
+  line-height: 1.15;
+  color: var(--dorado-h1);
+  text-shadow: 0 2px 18px rgba(212, 175, 112, 0.25);
+}
+
+/* ---------- Nodos ---------- */
+
+main {
+  width: 100%;
+  max-width: 44rem;
+}
+
+.nodo {
+  display: block;
+  padding: 0.5rem 0.25rem;
+  animation: aparecer 0.7s ease both;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  margin: 0 0 1rem;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 700;
+  font-size: clamp(1.9rem, 5vw, 2.6rem);
+  line-height: 1.2;
+  color: var(--beige-h2);
+}
+
+p {
+  margin: 0 0 2rem;
+  max-width: 62ch;
+  font-family: "Lora", serif;
+  font-size: 1.12rem;
+  line-height: 1.8;
+  color: var(--gris-p);
+}
+
+/* ---------- Opciones (enlaces como botones) ---------- */
+
+.opciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+a {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: var(--celeste-a);
+  text-decoration: none;
+}
+
+.boton {
+  display: inline-block;
+  padding: 0.85rem 1.5rem;
+  background-color: var(--boton);
+  border: 1px solid rgba(143, 199, 216, 0.35);
+  border-radius: 4px;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--dorado-hover);
+}
+
+.boton:hover,
+.boton:focus-visible {
+  border-color: var(--dorado-hover);
+  background-color: #2c4260;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.boton:active {
+  transform: translateY(0);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--dorado-hover);
+  outline-offset: 3px;
+}
+
+/* ---------- Ilustración (nodo final) ---------- */
+
+.ilustracion {
+  margin: 2.5rem 0 0;
+}
+
+.ilustracion img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(212, 175, 112, 0.45);
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- Adaptación a móvil ---------- */
+
+@media (max-width: 520px) {
+  body {
+    padding-top: 2rem;
+  }
+
+  .opciones {
+    flex-direction: column;
+  }
+
+  .boton {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ---------- Accesibilidad: respetar reducción de movimiento ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .nodo {
+    animation: none;
+  }
+
+  .boton {
+    transition: none;
+  }
+
+  .boton:hover,
+  .boton:focus-visible {
+    transform: none;
+  }
+}
